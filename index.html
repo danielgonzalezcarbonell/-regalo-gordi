@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10172b">
+<meta name="description" content="Una misión secreta de cumpleaños.">
+<title>Misión de la Navidad ✨</title>
+
+<style>
+:root{--bg:#0d1427;--panel:#151f38;--gold:#f3cf83;--cream:#fff8e9;--muted:#c4cbe0;--pink:#f4a9c2}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#243354 0%,var(--bg) 55%);color:var(--cream);font-family:Georgia,'Times New Roman',serif;display:flex;align-items:center;justify-content:center;padding:22px;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.45;background-image:radial-gradient(#fff 1px,transparent 1px),radial-gradient(#f3cf83 1px,transparent 1px);background-size:73px 73px,113px 113px;background-position:0 0,32px 48px}
+main{position:relative;width:min(100%,620px);z-index:1}
+.card{background:linear-gradient(145deg,rgba(28,40,68,.97),rgba(15,23,42,.98));border:1px solid rgba(243,207,131,.45);border-radius:24px;padding:clamp(24px,6vw,44px);box-shadow:0 24px 80px #0006;text-align:center;animation:appear .55s ease both}
+.eyebrow{font:600 .72rem/1.4 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(2rem,7vw,3.35rem);line-height:1.08;margin:18px 0;color:var(--cream);font-weight:500}
+p{font-size:1.12rem;line-height:1.7;color:var(--muted)}
+.ornament{font-size:3rem;margin:12px 0}
+button{border:0;border-radius:999px;padding:14px 22px;font:600 .98rem system-ui,sans-serif;cursor:pointer;transition:transform .15s,filter .15s}
+button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.primary{background:var(--gold);color:#22243a;margin-top:14px}
+.small{font:.85rem/1.5 system-ui,sans-serif;color:#aeb8d0}
+.progress{height:5px;background:#34415e;border-radius:99px;overflow:hidden;margin:0 0 24px}
+.bar{height:100%;width:0;background:var(--gold);transition:width .35s}
+.hidden{display:none!important}
+.video-container{position:relative;width:100%;aspect-ratio:16/9;margin-top:22px;border-radius:14px;overflow:hidden;background:#080d18}
+.video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+
+<body>
+<main>
+  <div class="progress" id="progress" aria-label="Progreso de la misión">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <section class="card" id="story">
+    <div class="eyebrow">Una sorpresa de cumpleaños</div>
+    <div class="ornament">✦</div>
+
+    <h1>Misión de la Navidad</h1>
+
+    <p>Feliz cumpleaños, mi amor. Este año tu regalo no empieza con un envoltorio, sino con un pequeño scape room. Hay cuatro pistas entre tú y la sorpresa que he preparado para nosotros.</p>
+
+    <p>Respira hondo, sigue las señales y descubre nuestro próximo recuerdo.</p>
+
+    <button class="primary" id="continueButton" type="button">
+      Aceptar la misión ✨
+    </button>
+
+    <p class="small">Una pequeña aventura creada especialmente para ti.</p>
+  </section>
+
+  <section class="card hidden" id="videoScreen" aria-label="Vídeo sorpresa">
+    <div class="eyebrow">Una sorpresa para ti</div>
+    <div class="ornament">✦</div>
+
+    <h1>Tu sorpresa 💫</h1>
+
+    <div class="video-container">
+      <iframe
+        id="surpriseVideo"
+        src="about:blank"
+        title="Vídeo sorpresa"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+</main>
+
+<script>
+document.getElementById("continueButton").addEventListener("click", function () {
+  document.getElementById("story").classList.add("hidden");
+  document.getElementById("progress").classList.add("hidden");
+
+  const videoScreen = document.getElementById("videoScreen");
+  videoScreen.classList.remove("hidden");
+
+  document.getElementById("surpriseVideo").src =
+    "https://drive.google.com/file/d/1WLtBYSxMYoBSwxhi4Pmn1c0oCOgW8UVz/preview";
+
+  videoScreen.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+</script>
+
+</body>
+</html>
